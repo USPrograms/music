@@ -82,22 +82,40 @@ def intervals(note, interval):
         if solution[0] == expected_note:
             expected_solution = solution
     #print("Expected Solution", expected_solution)
+    if(expected_solution == ''):
+        return ("possible ",possible_solutions)
     return expected_solution
 major_chord = []
 minor_chord = []
+augmented_chord = []
+diminshed_chord = []
 while(root !="q" and root !="Q" ):
     try:
         root = input("\nPlease Enter the Note!\n")
         major_chord.clear()
         minor_chord.clear()
+        augmented_chord.clear()
+        diminshed_chord.clear()
     except ValueError:
         root = "q"
         break
     major_chord.append(root)
     major_chord.append(intervals(root, 'M3'))
     major_chord.append(intervals(root, 'P5'))
+
     minor_chord.append(root)
     minor_chord.append(intervals(root, 'm3'))
     minor_chord.append(intervals(root, 'P5'))
+
+    augmented_chord.append(root)
+    augmented_chord.append(intervals(root, 'M3'))
+    augmented_chord.append(intervals(root, 'A5'))
+
+    diminshed_chord.append(root)
+    diminshed_chord.append(intervals(root, 'm3'))
+    diminshed_chord.append(intervals(root, 'D5'))
+
     print("Major ", root, " chord ", major_chord)
     print("Minor  ", root, " chord ", minor_chord)
+    print("Augmented  ", root, " chord ", augmented_chord)
+    print("Diminished ", root," chord ", diminshed_chord)
